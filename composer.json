@@ -1,0 +1,25 @@
+{
+    "name": "tvswe/Table",
+    "type": "library",
+    "description": "Table",
+    "keywords": [
+        "table"
+    ],
+    "homepage": "http://tvswe.eu/",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Tino Vogel",
+            "email": "tv.swe@gmx.de"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.2"
+    },
+    "autoload": {
+        "classmap": [
+            "/",
+            "Components"
+        ]
+  }
+}
