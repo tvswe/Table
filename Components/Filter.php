@@ -32,11 +32,37 @@ class Filter extends TableComponent
      * 
      * @param string $name
      */
-    public function __construct($name)
+    private function __construct($name, array $options)
     {
         $this->name = $name;
         $this->value = 0;
-        $this->options = array();
+        $this->options = $options;
+    }
+
+    /**
+     * 
+     * @param string $name
+     * @param array $options
+     */
+    public static function fromArray($name, array $options)
+    {
+	$filter = new Filter($name, $options);
+
+	return $filter;
+    }
+
+    /**
+     * 
+     * @param string $name
+     * @param FilterModelInterface $model
+     * @param array $arguments
+     */
+    public static function fromModel($name, FilterModelInterface $model, array $arguments = [])
+    {
+	$options = $model->getFilterOptions($arguments);
+	$filter = self::fromArray($name, $options);
+
+	return $filter;
     }
     
     /**
@@ -55,15 +81,6 @@ class Filter extends TableComponent
     public function setValue($value)
     {
         $this->value = $value;
-    }
-    
-    /**
-     * 
-     * @param array $options
-     */
-    public function setOptions($options)
-    {
-        $this->options = $options;
     }
     
     /**

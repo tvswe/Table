@@ -2,6 +2,7 @@
 
 namespace Tvswe\Table;
 
+require_once 'FilterModelInterface.php';
 require_once 'Components/TableComponent.php';
 require_once 'Components/Filter.php';
 require_once 'Components/Pagination.php';
