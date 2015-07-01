@@ -140,7 +140,7 @@ class Sorting extends TableComponent
     
     /**
      * Enables a disabled sorting
-     * @param type $count
+     * @param integer $count
      */
     public function enable($count = 1)
     {

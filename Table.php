@@ -90,7 +90,7 @@ class Table
      */
     public function setRows($rows, $count = 0)
     {
-        if(!$count) {
+        if (!$count) {
             $count = count($rows);
         }
         
@@ -138,7 +138,7 @@ class Table
     {
         $result = array();
         
-        foreach($this->filters as $key => $filter) {
+        foreach ($this->filters as $key => $filter) {
             $result[$key] = $filter->getQueryData();
         }
         
@@ -153,10 +153,10 @@ class Table
     {
         $result = array();
         
-        foreach($this->sortings as $key => $sorting) {
+        foreach ($this->sortings as $key => $sorting) {
             $data = $sorting->getQueryData();
             
-            if(!$data) {
+            if (!$data) {
                 continue;
             }
             
@@ -195,7 +195,7 @@ class Table
     {
         $result = array();
         
-        foreach($this->filters as $key => $filter) {
+        foreach ($this->filters as $key => $filter) {
             $result[$key] = $filter->getData();
         }
         
@@ -210,7 +210,7 @@ class Table
     {
         $result = array();
         
-        foreach($this->sortings as $key => $sorting) {
+        foreach ($this->sortings as $key => $sorting) {
             $result[$key] = $sorting->getData();
         }
         
@@ -224,7 +224,7 @@ class Table
      */
     public function checkHash($hash)
     {
-        if($hash !== $this->getHash()) {
+        if ($hash !== $this->getHash()) {
             $this->pagination->resetPage();
             return false;
         }
@@ -265,8 +265,8 @@ class Table
         $count = count($this->sortings);
         
         /** @var Components\Sorting $sorting */
-        foreach($this->sortings as $sorting) {
-            if($sorting->isDirty()) {
+        foreach ($this->sortings as $sorting) {
+            if ($sorting->isDirty()) {
                 $dirtySorting = $sorting;
                 continue;
             }
@@ -274,7 +274,7 @@ class Table
             $sorting->initialize($count);
         }
         
-        if(!$dirtySorting) {
+        if (!$dirtySorting) {
             return;
         }
         
@@ -298,8 +298,8 @@ class Table
         $dirtySorting->enable(count($this->sortings));
         
         /** @var Components\Sorting $sorting */
-        foreach($this->sortings as $sorting) {            
-            if($sorting === $dirtySorting) {
+        foreach ($this->sortings as $sorting) {            
+            if ($sorting === $dirtySorting) {
                 continue;
             }
             
@@ -317,14 +317,14 @@ class Table
         $dirtySorting->initialize($count);
         
         /** @var Components\Sorting $sorting */
-        foreach($this->sortings as $sorting) {            
-            if($sorting === $dirtySorting) {
+        foreach ($this->sortings as $sorting) {            
+            if ($sorting === $dirtySorting) {
                 continue;
             }
             
             $sorting->initialize($count);
             
-            if($sorting->getBaseValue() > $dirtySorting->getBaseValue()) {
+            if ($sorting->getBaseValue() > $dirtySorting->getBaseValue()) {
                 $sorting->decrease();
             }
         }
@@ -335,7 +335,6 @@ class Table
     /**
      * 
      * @param Components\Sorting $dirtySorting
-     * @param integer $previousValue
      */
     protected function disableSorting(Components\Sorting $dirtySorting)
     {
@@ -344,14 +343,14 @@ class Table
         $dirtySorting->initialize($count);
         
         /** @var Components\Sorting $sorting */
-        foreach($this->sortings as $sorting) {  
-            if($sorting === $dirtySorting) {
+        foreach ($this->sortings as $sorting) {  
+            if ($sorting === $dirtySorting) {
                 continue;
             }
             
             $sorting->initialize($count);
             
-            if($sorting->getBaseValue() < $previousBaseValue) {
+            if ($sorting->getBaseValue() < $previousBaseValue) {
                 $sorting->increase();
             }
         }
