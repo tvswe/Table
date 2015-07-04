@@ -43,6 +43,7 @@ class Filter extends TableComponent
      * 
      * @param string $name
      * @param array $options
+     * @return \Tvswe\Table\Components\Filter
      */
     public static function fromArray($name, array $options)
     {
@@ -56,9 +57,14 @@ class Filter extends TableComponent
      * @param string $name
      * @param FilterModelInterface $model
      * @param array $arguments
+     * @return \Tvswe\Table\Components\Filter|null
      */
-    public static function fromModel($name, FilterModelInterface $model, array $arguments = [])
+    public static function fromModel($name, $model, array $arguments = [])
     {
+        if (!$model instanceof \Tvswe\Table\FilterModelInterface) {
+            return null;
+        }
+        
 	$options = $model->getFilterOptions($arguments);
 	$filter = self::fromArray($name, $options);
 
